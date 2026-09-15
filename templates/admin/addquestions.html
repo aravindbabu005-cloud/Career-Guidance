@@ -1,0 +1,152 @@
+{% extends 'admin/common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+{% endfor %}
+
+<div class="inner-page-wrapper contact-wrapper">
+
+    <div class="container">
+  
+      <div class="row">
+  
+        <div class="col-md-9 col-sm-8">
+  
+          <div class="contact-text-container">
+  
+           
+            <form method="POST" action="">
+              {% csrf_token %}
+  
+              <div class="row">
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+                    <input type="hidden" name="msgcount" value="{{ msgcount }}">
+                    <input name="qstn" required class="form-control form-item" placeholder="Questions" type="text">
+  
+                  </div>
+  
+                </div>
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input placeholder="option1" name="op1" required class="form-control form-item"  type="text">
+  
+                  </div>
+  
+                </div>
+                <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input placeholder="option2" name="op2" required class="form-control form-item" type="text">
+    
+                    </div>
+    
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input placeholder="option3" name="op3" required class="form-control form-item" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input placeholder="option4" name="op4" required class="form-control form-item"  type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input placeholder="answer" name="ans" required class="form-control form-item"  type="text">
+                    </div>
+                  </div>
+                  {% comment %} <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="department"  required class="form-control form-item" placeholder="department" type="text">
+    
+                    </div>
+    
+                  </div> {% endcomment %}
+                  {% comment %} <div class="col-md-8 col-xs-12">
+                    <label>Select Departments:</label>
+                    <div class="form-group">
+                      <input type="checkbox" name="department" value="1"> Computer Science<br>
+                      <input type="checkbox" name="department" value="2"> Mathematics<br>
+                      <input type="checkbox" name="department" value="3"> Physics<br>
+                      <input type="checkbox" name="department" value="4"> Chemistry<br>
+
+                    </div>
+                  </div> {% endcomment %}
+                  
+
+  
+                <div class="col-xs-12">
+  
+                  <button class="btn btn-1" type="submit">Submit</button>
+  
+                </div>
+  
+              </div>
+  
+            </form>
+  
+          </div>
+  
+        </div>
+{% comment %}   
+        <div class="col-md-3 col-sm-4">
+  
+          <div class="contact-social">
+  
+            <address> {% endcomment %}
+  
+            {% comment %} <ul>
+  
+              <li><i class="fa fa-home"></i>1980 Fulton Street San Diego</li>
+  
+              <li><i class="fa fa-phone"></i>0800 123 46 0000</li>
+  
+              <li><i class="fa fa-envelope-o"></i><a href="javascript:void(0)">support@yourdomain.com</a></li>
+  
+              <li><i class="fa fa-twitter"></i><a href="javascript:void(0)">Twitter</a></li>
+  
+              <li><i class="fa fa-dribbble"></i><a href="javascript:void(0)">Dribbble</a></li>
+  
+              <li><i class="fa fa-youtube"></i><a href="javascript:void(0)">You Tube</a></li>
+  
+              <li><i class="fa fa-pinterest"></i><a href="javascript:void(0)">Pinterest</a></li>
+  
+              <li><i class="fa fa-linkedin"></i><a href="javascript:void(0)">Linkedin</a></li>
+  
+              <li><i class="fa fa-instagram"></i><a href="javascript:void(0)">Instagram</a></li>
+  
+            </ul>
+  
+            </address> {% endcomment %}
+  
+          {% comment %} </div>
+  
+        </div> {% endcomment %}
+  
+      </div> 
+  
+    </div>
+  
+    {% comment %} <div id="google-map">
+  
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d198710.35112897935!2d-98.51489117772236!3d38.904562823631146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1471865832140" allowfullscreen=""></iframe>
+  
+    </div> {% endcomment %}
+  
+  </div>
+  {% endblock %}

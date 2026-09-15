@@ -1,0 +1,104 @@
+{% extends 'Mentor/common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+{% endfor %}
+
+<div class="inner-page-wrapper contact-wrapper">
+
+    <div class="container">
+  
+      <div class="row">
+  
+        <div class="col-md-9 col-sm-8">
+  
+          <div class="contact-text-container">
+  
+           
+            <form method="POST" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+  
+              <div class="row">
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="title" required class="form-control form-item" placeholder="titlee" type="text">
+  
+                  </div>
+  
+                </div>
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="content" required class="form-control form-item" name="content" type="text">
+  
+                  </div>
+  
+                </div>
+                <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input type="file" id="pdf" name="pdf" accept=".pdf">
+    
+                    </div>
+    
+                  </div>
+    
+                  {% comment %} <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="department"  required class="form-control form-item" placeholder="department" type="text">
+    
+                    </div>
+    
+                  </div> {% endcomment %}
+                  {% comment %} <div class="col-md-8 col-xs-12">
+                    <label>Select Departments:</label>
+                    <div class="form-group">
+                      <input type="checkbox" name="department" value="1"> Computer Science<br>
+                      <input type="checkbox" name="department" value="2"> Mathematics<br>
+                      <input type="checkbox" name="department" value="3"> Physics<br>
+                      <input type="checkbox" name="department" value="4"> Chemistry<br>
+
+                    </div>
+                  </div> {% endcomment %}
+                  
+
+  
+                <div class="col-xs-12">
+  
+                  <button class="btn btn-1" type="submit">Add Notes</button>
+  
+                </div>
+  
+              </div>
+  
+            </form>
+  
+          </div>
+  
+        </div>
+
+  
+      </div> 
+  
+    </div>
+  
+  </div>
+
+
+
+
+
+  {% endblock %}

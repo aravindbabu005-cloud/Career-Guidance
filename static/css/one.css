@@ -1,0 +1,207 @@
+/*------------------------------------
+	just replace "3eb2ce" with your custom color
+------------------------------------*/
+a:hover {
+	color: #3eb2ce;
+}
+header {
+	background: #3eb2ce;
+}
+.top-wrapper ul li {
+	color: #fff;
+}
+.top-wrapper ul li a {
+	color: #fff;
+}
+.top-wrapper ul.header-social-icons li a i:hover {
+	color: #fff;
+}
+#scrollUp {
+	background: #3eb2ce;
+}
+.fade-carousel .hero:before {
+  background: rgba(62, 178, 206, 0.7) none repeat scroll 0 0;
+}
+.hero h1, .hero h3 {
+	color:#fff;
+	}
+.top-wraper-left ul li i {
+	color: #fff;
+}
+.affix .mainmenu-area ul.nav.navbar-nav li a:hover, .affix .mainmenu-area ul.nav.navbar-nav li.active a {
+	color: #3eb2ce;
+}
+.mainmenu-area ul.nav.navbar-nav li ul li a:hover {
+	color: #3eb2ce;
+}
+.mainmenu-area ul.nav.navbar-nav li ul li:after {
+	background: #3eb2ce;
+}
+.mainmenu-area ul.nav.navbar-nav > li:hover > a:after {
+	background: #3eb2ce;
+		}
+.mainmenu-area ul.nav.navbar-nav > li a:hover, .mainmenu-area ul.nav.navbar-nav > li.active a{
+	color: #3eb2ce;
+	}
+.fade-carousel .carousel-indicators > li.active {
+	background: #555;
+}
+.fade-carousel .carousel-control span:hover {
+	border: 1px solid #3eb2ce;
+	background: #3eb2ce;
+}
+.banner-wrapper .btn-hero { 
+	background: #3eb2ce;
+}
+.feature-wrapper .icon:hover i.fa { 
+	color: #3eb2ce;
+}
+.callouts-wrapper h2 span {
+	color: #3eb2ce;
+}
+.callouts-wrapper .callouts h3::after {
+	background-color: #3eb2ce;
+}
+.callouts-box.hover::before, .callouts-box.hover::after, .callouts-box:hover::before, .callouts-box:hover::after {
+  border-color: #3eb2ce;
+}
+.callouts-wrapper .callouts .callouts-box .icon-box i {
+	color:#3eb2ce;
+	}
+.bg-primary {
+  background: #3eb2ce;
+  fill: #3eb2ce;
+}
+.about-btn .btn {
+  border: 2px solid #3eb2ce;
+  color:#fff;
+}
+.about-btn .btn:hover {
+	background:#3eb2ce;
+	}
+.thumbnail-model .thumbnail-caption {
+  background: #3eb2ce;
+}	
+.bg-teak {
+  background: #fff;
+}
+.satisfied-wrapper .counter p::before {
+  background-color: #3eb2ce;
+}
+.testimonials-wrapper h2 span {
+  color: #3eb2ce;
+}
+.testimonials-wrapper h3 {
+	color: #3eb2ce;
+}
+.testimonials-wrapper .carousel-indicators .active {
+	background: #3eb2ce;
+}
+.pricing-wrapper-main .pricing-table .pricing-table-cta a {
+  background: #3eb2ce;
+}
+.single-item .button-default {
+  background: #3eb2ce;
+}
+.single-item {
+  border-bottom: 3px solid #3eb2ce;
+}
+.team-member-position p {
+	color: #FA9928;
+}
+.link-group i {
+	color:#3eb2ce;
+	}
+.social-wrapper h2 span {
+	color: #3eb2ce;
+}
+.team-wrapper h2 span {
+	color: #3eb2ce;
+}
+.contact-wrapper .btn {
+	background:#3eb2ce;
+	}
+.contact-social ul li a {
+	color:#3eb2ce;
+	}	
+.contact-wrapper .btn:hover, .contact-social ul li a:hover {
+	opacity:0.8;
+	}	
+.contact-wrapper2-bg .box-variant-1 i {
+  color: #3eb2ce;
+}	
+.breadcrumb-banner-wrapper ul li:last-child {
+  color:#3eb2ce;
+}
+.course-wrapper h2 span {
+	color: #3eb2ce;
+}
+.inner-page-wrapper h2 {
+	color:#3eb2ce
+	}
+.oops i {
+ background:#3eb2ce;
+}	
+.oops .btn-home:hover, .oops .btn-home:focus {
+  background: #3eb2ce;
+  border-color:#3eb2ce;
+}
+.blo-image-date > a {
+	background: #e29435;
+	}
+.blo-image-date > a:hover {
+	color:#fff;
+}
+.blog-text > a { 
+background: #e29435;
+}
+.contact-wrapper .contact-box i {
+  background:#e29435;
+  }
+.contact-wrapper h3:before {
+  background: #e29435;
+}  
+.contact-details .divider {
+	background:#e29435;
+}
+.classic-tab-panel .tabbable-line > .nav-tabs > li.active {
+	border-bottom: 1px solid #e29435;
+}
+.conetent-wrapper h2 span {
+	color: #e29435;
+}
+.single-course-details {
+  border-bottom: 3px solid #3eb2ce;
+}
+.course-duration .text {
+	background:#3eb2ce;
+    border-bottom: 1px solid #3eb2ce;
+    display: block;
+    padding: 15px 0;
+}
+.author-info a {
+	color:#3eb2ce;
+	}
+.author-info > h4 a {
+	color: #3eb2ce;
+}	
+.login form .btn {
+  background:#3eb2ce;
+}
+.login .new-account.reg h3 strong {
+  color:#3eb2ce;
+}
+.login .new-account a {
+   border: 1px solid #3eb2ce;
+    color: #3eb2ce;
+}
+.footer-wrapper h3:after {
+	background: #3eb2ce;
+}
+.footer-wrapper .text-box-right h4 a:hover, .footer-wrapper .text-box-right h4 a:focus {
+	color: #3eb2ce;
+}
+.footer-wrapper .footer-tags li a:hover, .footer-wrapper  .footer-tags li a.active {
+	border: 1px solid #3eb2ce;
+	color: #3eb2ce;
+}

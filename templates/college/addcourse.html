@@ -1,0 +1,110 @@
+{% extends 'college/common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+{% endfor %}
+
+<div class="inner-page-wrapper contact-wrapper">
+
+    <div class="container">
+  
+      <div class="row">
+  
+        <div class="col-md-9 col-sm-8">
+  
+          <div class="contact-text-container">
+  
+           
+            <form method="POST" action="">
+              {% csrf_token %}
+  
+              <div class="row">
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="name" required class="form-control form-item" placeholder="name" type="text">
+  
+                  </div>
+  
+                </div>
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="duration" required class="form-control form-item" placeholder="duration" type="text">
+  
+                  </div>
+  
+                </div>
+                <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="fees" required class="form-control form-item" placeholder="fees" type="text">
+    
+                    </div>
+    
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="details" required class="form-control form-item" placeholder="details" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="gpa" required class="form-control form-item" placeholder="gpa" type="text">
+                    </div>
+                  </div>
+                  {% comment %} <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="phone"  pattern="[6789][0-9]{9}" maxlength="10" required class="form-control form-item" placeholder="phonenumber" type="text">
+                    </div>
+                  </div> {% endcomment %}
+                  {% comment %} <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="department"  required class="form-control form-item" placeholder="department" type="text">
+    
+                    </div>
+    
+                  </div> {% endcomment %}
+                  <div class="col-xs-12">
+                    <label for="mentor">Select Mentor:</label>
+                      <select id="mentor" name="mentor" required>
+                          <option value="">-- Select Mentor --</option>
+                          {% for mentor in mentors %}
+                              <option value="{{ mentor.id }}">{{ mentor.name }}</option>
+                          {% endfor %}
+                   
+                       </select><br>
+                  </div>                    
+                <div class="col-xs-12">
+  
+                  <button class="btn btn-1" type="submit">Submit</button>
+  
+                </div>
+  
+              </div>
+  
+            </form>
+  
+          </div>
+  
+        </div>
+
+  
+      </div> 
+  
+    </div>
+  
+  </div>
+  {% endblock %}

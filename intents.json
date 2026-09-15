@@ -1,0 +1,176 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi", "Hello", "Hey", "Good morning", "Good afternoon", "Good evening",
+                "How are you?", "Is anyone there?", "I need career advice",
+                "Can you help with my career?", "I'm looking for career guidance",
+                "I need help with my professional development", "Can we discuss my career options?",
+                "I'm seeking career counseling", "Need professional guidance",
+                "Career advisor needed", "Looking for career direction",
+                "Help me plan my career", "Let's talk about my career"
+            ],
+            "responses": [
+                "Hello! I'm your AI Career Guidance Assistant. I can help you explore career paths, develop skills, or plan your job search. What would you like to focus on?",
+                "Hi there! I'm here to help with your career development. Would you like to discuss career options, skill development, or job search strategies?",
+                "Welcome! I'm your career guidance assistant. Let's work together on your professional growth. What's your main career concern right now?"
+            ],
+            "context": ["initial_contact", "career_guidance"],
+            "suggestions": [
+                "Tell me about different career paths",
+                "How can I develop my skills?",
+                "Help me with job searching",
+                "I need education advice"
+            ]
+        },
+        {
+            "tag": "career_exploration",
+            "patterns": [
+                "What career should I choose?",
+                "How do I find my ideal career?",
+                "Which jobs match my skills?",
+                "I'm unsure about my career path",
+                "Help me choose a career direction",
+                "What careers align with my interests?",
+                "How to decide on a career path?",
+                "What are the best job options for me?",
+                "I want to change careers",
+                "How do I transition to a new field?",
+                "What industries are growing?",
+                "Where can I find career opportunities?",
+                "What careers have good future prospects?",
+                "Tell me about different careers"
+            ],
+            "responses": [
+                "Let's explore your career options. First, could you tell me about your interests and what kind of work energizes you?",
+                "To help you find the right career path, let's start with your strengths. What skills do you enjoy using the most?",
+                "Finding the right career involves understanding your interests, skills, and values. What aspects of work are most important to you?"
+            ],
+            "context": ["career_choice", "career_transition"],
+            "suggestions": [
+                "What are my career options?",
+                "Tell me about growing industries",
+                "How to evaluate career choices?",
+                "What skills do I need?"
+            ]
+        },
+        {
+            "tag": "skills_development",
+            "patterns": [
+                "What skills do I need?",
+                "How can I improve my skills?",
+                "What are in-demand skills?",
+                "How to develop leadership skills?",
+                "Which technical skills are valuable?",
+                "How to enhance my soft skills?",
+                "What skills will be important?",
+                "How to stay competitive?",
+                "Best ways to learn new skills",
+                "Skills needed for promotion",
+                "How to demonstrate skills?",
+                "Professional development advice",
+                "What courses should I take?",
+                "How to build my skillset?"
+            ],
+            "responses": [
+                "There are several key skills that can boost your career growth. Would you like to focus on technical skills, soft skills, or leadership development?",
+                "To help you develop the right skills, let's first identify your current strengths and areas for improvement. What skills do you currently use most in your work?",
+                "Skills development is crucial for career growth. Let's create a personalized learning plan based on your career goals. What specific area would you like to improve?"
+            ],
+            "context": ["professional_development", "skill_building"],
+            "suggestions": [
+                "Technical skills I need",
+                "How to improve soft skills",
+                "Leadership development tips",
+                "Recommended courses"
+            ]
+        },
+        {
+            "tag": "job_search",
+            "patterns": [
+                "How to find a job?",
+                "Job search tips",
+                "How to write a resume?",
+                "Interview preparation help",
+                "How to stand out to employers?",
+                "Job application strategies",
+                "Tips for job searching",
+                "How to network?",
+                "Where to find jobs?",
+                "Resume writing help",
+                "Interview tips needed",
+                "How to ace interviews?",
+                "Job hunting advice",
+                "Career change strategy"
+            ],
+            "responses": [
+                "I can help you with your job search. Would you like to focus on resume writing, interview preparation, or job search strategies?",
+                "Let's improve your job search approach. First, are you looking for guidance on finding opportunities, preparing applications, or interview techniques?",
+                "To help with your job search, I can provide tips on applications, interviews, and networking. Which area would you like to start with?"
+            ],
+            "context": ["job_search", "career_transition"],
+            "suggestions": [
+                "Resume writing tips",
+                "Interview preparation",
+                "Networking strategies",
+                "Job search methods"
+            ]
+        },
+        {
+            "tag": "education_planning",
+            "patterns": [
+                "What should I study?",
+                "Which degree is best?",
+                "How to choose a college?",
+                "Best courses for my career",
+                "Education requirements",
+                "What certifications do I need?",
+                "Online vs traditional education",
+                "Worth getting a degree?",
+                "Continuing education advice",
+                "Professional certifications",
+                "Education planning help",
+                "Course recommendations",
+                "Training programs needed",
+                "Education path guidance"
+            ],
+            "responses": [
+                "Let's plan your educational path. What career field are you interested in pursuing?",
+                "To recommend the right educational options, could you tell me about your career goals and current educational background?",
+                "I can help you choose the right educational path. Are you interested in degree programs, professional certifications, or specific courses?"
+            ],
+            "context": ["education_planning", "professional_development"],
+            "suggestions": [
+                "Compare degree programs",
+                "Certification options",
+                "Course recommendations",
+                "Education requirements"
+            ]
+        },
+        {
+            "tag": "feedback",
+            "patterns": [
+                "Thanks", "Thank you", "That's helpful",
+                "Good advice", "This helps",
+                "You've been helpful", "Great information",
+                "Appreciate it", "That makes sense",
+                "I understand now", "Clear explanation",
+                "Got it", "Makes sense",
+                "I'll try that"
+            ],
+            "responses": [
+                "I'm glad I could help! Would you like to explore any other career-related topics?",
+                "Happy to assist! Is there anything else you'd like to know about?",
+                "Great! Let me know if you need more information or have other questions."
+            ],
+            "context": ["feedback", "continuation"],
+            "suggestions": [
+                "Tell me more",
+                "Another question",
+                "More information please",
+                "Next steps"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+{% extends 'student/common.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="min-height: 20vh;">
+    <div class="col-md-8">
+      <form class="input-group mb-5 mt-4" method="POST">
+        {% csrf_token %}
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Search for a course..." 
+          name="search_term" 
+          value="{{ search_term }}" 
+          style="background-color: lightyellow; color: black;"
+        >
+        <button 
+          class="btn btn-primary" 
+          type="submit" 
+          style="background-color: lightblue; color: white;"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% if data.exists %}
+  <div class="container">
+    <h3 class="text-center mb-4">{% if search_term %}Search Results{% else %}All Courses{% endif %}</h3>
+
+    <div class="inner-page-wrapper course-wrapper">
+      {% for i in data %}
+        {% if forloop.first or forloop.counter0|divisibleby:2 %}
+          <div class="row offset-top-40">
+        {% endif %}
+
+        <div class="col-sm-6 col-md-6 mb-4">
+          <div class="single-item border p-3 shadow-sm rounded" style="background-color: #f9f9f9;">
+            <div class="single-item-text">
+              <h4><a href="#" style="color: navy;">Name: {{ i.name }}</a></h4>
+              <div class="single-item-text-info">
+                <span>Duration: <span>{{ i.duration }}</span></span>
+              </div>
+              <p>Fees: {{ i.fees }}</p>
+              <p>GPA: Students with more than {{ i.gpa }}% mark can join</p>
+              <p>{{ i.details }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% if forloop.counter|divisibleby:2 or forloop.last %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}

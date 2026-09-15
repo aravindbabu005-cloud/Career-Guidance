@@ -1,0 +1,20 @@
+
+<h2>Loan Options Available</h2>
+{% if loan_options %}
+    <ul>
+        {% for loan in loan_options %}
+            <li>
+                <strong>{{ loan.loan_type }}</strong><br>
+                {% if loan.college %} College: {{ loan.college.name }} {% endif %}
+                {% if loan.course %} Course: {{ loan.course.name }} {% endif %}<br>
+                Amount: ₹{{ loan.loan_amount }}<br>
+                Interest Rate: {{ loan.interest_rate }}%<br>
+                Duration: {{ loan.loan_duration }}<br>
+                Eligibility: GPA ≥ {{ loan.eligible_gpa }}<br>
+                Details: {{ loan.details }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No loan options are available for the eligible colleges or courses.</p>
+{% endif %}

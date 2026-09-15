@@ -1,0 +1,38 @@
+{% extends 'college/common.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+  <h2 class="mb-3">Mentor List</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Location</th>
+        <th>Qualification</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in mentors %}
+      <tr>
+        <td>{{ m.id }}</td>
+        <td>{{ m.name }}</td>
+        <td>{{ m.email }}</td>
+        <td>{{ m.phone }}</td>
+        <td>{{ m.location }}</td>
+        <td>{{ m.qualification }}</td>
+        <td>
+          <a href="{% url 'editMentor' m.id %}" class="btn btn-warning btn-sm">Edit</a>
+          <a href="{% url 'deleteMentor' m.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

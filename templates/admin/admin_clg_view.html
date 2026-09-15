@@ -1,0 +1,81 @@
+{% extends 'admin/common.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="inner-page-wrapper course-wrapper">
+
+    <div class="container">
+  
+      <div class="row offset-top-40">
+        {% for i in data %}
+        {% if  i.user.is_active == 0 %}
+        <div class="col-sm-6 col-md-4">
+  
+          <div class="single-item">
+  
+            <div class="single-item-image overlay-effect"> <a href="#"><img src="images/courses-img1.jpg" alt=""></a> </div>
+  
+            <div class="single-item-text">
+  
+              <h4><a href>Name:{{i.name}}</a></h4>
+  
+              <div class="single-item-text-info"><span>Location <span>{{i.location}}</span></span> </div>
+  
+              <p>Email:{{i.email}}</p>
+              <p>Contact:{{i.phone}}</p>
+  
+            </div>
+            <div class="button-bottom"> 
+              <a href="clgapprove?id={{i.user.id}}" class="btn button-default">Approve</a> 
+             <a href="clgreject?id={{i.id}}" class="btn button-default">Reject</a> 
+            </div>
+  
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+  <div class="inner-page-wrapper course-wrapper">
+
+    <div class="container">
+      <h1 >Approved College</h1>
+      <div class="row offset-top-40">
+        {% for i in data %}
+        {% if  i.user.is_active == 1 %}
+        <div class="col-sm-6 col-md-4">
+  
+          <div class="single-item">
+  
+            <div class="single-item-image overlay-effect"> <a href="#"><img src="images/courses-img1.jpg" alt=""></a> </div>
+  
+            <div class="single-item-text">
+  
+              <h4><a href>Name:{{i.name}}</a></h4>
+  
+              <div class="single-item-text-info"><span>Location <span>{{i.location}}</span></span> </div>
+  
+              <p>Email:{{i.email}}</p>
+              <p>Contact:{{i.phone}}</p>
+  
+            </div>
+            <div class="button-bottom"> 
+              <a href="" class="btn button-default"></a>
+            </div>
+  
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+  
+    </div>
+  
+  </div>
+
+{% endblock %}

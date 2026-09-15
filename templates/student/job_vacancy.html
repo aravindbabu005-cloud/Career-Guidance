@@ -1,0 +1,43 @@
+{% extends 'student/common.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="inner-page-wrapper course-wrapper">
+
+    <div class="container">
+  
+      <div class="row offset-top-40">
+        {% for job in data %}
+      
+        <div class="col-sm-6 col-md-4">
+  
+          <div class="single-item">
+  
+            <div class="single-item-image overlay-effect"> <a href="#"><img src="images/courses-img1.jpg" alt=""></a> </div>
+  
+            <div class="single-item-text">
+  
+              <h4><a href>{{job.name}}</a></h4> 
+              <p><strong>Company_Name: {{ job.company_name }}</strong></p>
+              <p><strong>Location :{{ job.location }}</strong></p>
+              <p><strong>Salary:</strong> {{ job.salary }}</p>
+              <p><strong>Description:</strong> {{ job.description }}</p>
+              <p><strong>Eligibility:</strong> {{ job.eligibility_criteria }}</p>
+              <p><strong>Posted on:</strong> {{ job.created_at|date:"F d, Y" }}</p>
+              <p><strong>Deadline:</strong> {{ job.application_deadline|date:"F d, Y" }}</p>
+            </div>
+            <center><div class="single-item-button">
+            <form method="get" action="{% url 'apply_job' job.id %}">
+              <button type="submit" class="btn btn-success">Apply</button>
+          </form>
+        </div></center>
+          </div>
+        
+        </div>
+        {% endfor %}
+      </div>
+  
+    </div>
+  
+  </div>
+{% endblock %}

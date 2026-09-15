@@ -1,0 +1,51 @@
+{% extends 'college/common.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Student Applications</h2>
+
+  {% if applications %}
+  <table class="table table-bordered table-striped text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Student Name</th>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Actions</th>
+        <th>Applied Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for app in applications %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ app.student.name }}</td>
+        <td>{{ app.course.name }}</td>
+        <td>
+          {% if app.status == 'pending' %}
+            <span class="badge bg-warning text-dark">Pending</span>
+          {% elif app.status == 'accepted' %}
+            <span class="badge bg-success">Accepted</span>
+          {% elif app.status == 'rejected' %}
+            <span class="badge bg-danger">Rejected</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if app.status == 'pending' %}
+            <a href="{% url 'update_application_status' app.id 'accepted' %}" class="btn btn-success btn-sm">Accept</a>
+            <a href="{% url 'update_application_status' app.id 'rejected' %}" class="btn btn-danger btn-sm">Reject</a>
+          {% else %}
+            <button class="btn btn-secondary btn-sm" disabled>No Action</button>
+          {% endif %}
+        </td>
+        <td>{{ app.applied_at|date:"M d, Y H:i" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p class="text-center">No student applications received.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'student/common.html' %}
+{% load static %}
+{% block content %}
+
+<div class="inner-page-wrapper course-wrapper">
+
+    <div class="container">
+  
+      <div class="row offset-top-40">
+        {% for note in data %}
+        <div class="col-sm-6 col-md-4">
+
+          <div class="single-item">
+  
+            {% comment %} <div class="single-item-image overlay-effect"> <a href="#"><img src="{% static 'images/courses-img1.jpg' %}" alt=""></a> </div> {% endcomment %}
+  
+            <div class="single-item-text">
+                
+              <h4><a href="">{{ note.title }}</a></h4>
+              
+              <p><a href="">::{{ note.mentor.name }}</a></p>
+  
+              {% comment %} <div class="single-item-text-info"> <span>Duration: <span>{{i.duration}}</span></span> </div>
+              <p>Fees ::{{i.fees}}</p>
+              <p>GPA :: students with more than {{i.gpa}}% mark can join </p>
+  
+              <p>{{i.details}}</p>
+   {% endcomment %}
+              {% comment %} <div class="single-item-content">
+  
+                <div class="single-item-comment-view"> <span><i class="fa fa-eye"></i>259</span> <span><i class="fa fa-comment-o"></i>19</span> </div>
+  
+                <div class="single-item-rating"> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </div>
+  
+              </div> {% endcomment %}
+  
+            </div>
+           
+  
+            <div class="button-bottom"> <a  href="/view_interviewnote_details?id={{note.id}}"  class="btn button-default">View</a> 
+             {% comment %} <a  href="/delCourse?id={{i.id}}"  class="btn button-default">Delete</a>  {% endcomment %}
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+  {% endfor %}
+    </div>
+</div>
+  {% endblock %}

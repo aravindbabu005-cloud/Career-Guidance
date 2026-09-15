@@ -1,0 +1,59 @@
+{% extends 'admin/common.html' %}
+{% load static %}
+{% block content %}
+
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Edit Job</h2>
+    <form method="POST" class="border p-4 rounded shadow-sm bg-light">
+        {% csrf_token %}
+        
+        {% comment %} <div class="form-group">
+            <label>Course</label>
+            <select name="course" class="form-control" required>
+                {% for c in courses %}
+                    <option value="{{ c.id }}" {% if job.course.id == c.id %}selected{% endif %}>{{ c.name }}</option>
+                {% endfor %}
+            </select>
+        </div> {% endcomment %}
+
+        <div class="form-group">
+            <label>Job Name</label>
+            <input type="text" name="name" class="form-control" value="{{ job.name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" name="description" class="form-control" value="{{ job.description }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" name="company_name" class="form-control" value="{{ job.company_name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" value="{{ job.location }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="text" name="salary" class="form-control" value="{{ job.salary }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Eligibility Criteria</label>
+            <input type="text" name="eligibility" class="form-control" value="{{ job.eligibility_criteria }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Application Deadline</label>
+            <input type="date" name="deadline" class="form-control" value="{{ job.application_deadline|date:'Y-m-d' }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Update Job</button>
+        <a href="{% url 'show_jobs' %}" class="btn btn-secondary ml-2">Back</a>
+    </form>
+</main>
+
+{% endblock %}

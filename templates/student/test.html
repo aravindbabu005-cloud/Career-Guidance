@@ -1,0 +1,95 @@
+{% extends 'student/common.html' %}
+{% load static %}
+{% block content %}
+<section class=" slider_section position-relative">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <!-- <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol> -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="detail-box">
+                  <div>
+                    <h1>
+                      Attend Test
+                    </h1>
+                    <p class="breadcrumbs"><span class="mr-2">Home<i class="fa fa-chevron-right"></i></span> <span>Attend Test<i class="fa fa-chevron-right"></i></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="contact_section">
+  <div class="container">
+    <div class="row" style="margin-right: 20px;">
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <img src="{% static 'images/a-1.jpg' %}" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="contact-form">
+          <h5><u style="color: white;">Attend Test</u></h5>
+          <form method="POST" enctype="multipart/form-data" class="contact-form" id="contactForm" novalidate="novalidate">
+            {% csrf_token %}
+            <div style="color: black;">Q: {{ obj.question }}</div><br><br>
+            <div class="radio-options">
+              <div class="radio-button" style="margin-right: 380px;">
+                <input type="radio" id="age1" name="opt" value="{{obj.option1}}">
+                <label for="age1" style="color: black;margin-left: 10px;">{{obj.option1}}</label>
+              </div>
+              <div class="radio-button" style="margin-right: 380px;">
+                <input type="radio" id="age2" name="opt" value="{{obj.option2}}">
+                <label for="age2" style="color: black; margin-left: 10px;">{{obj.option2}}</label>
+              </div>
+              <div class="radio-button" style="margin-right: 380px;">
+                <input type="radio" id="age3" name="opt" value="{{obj.option3}}">
+                <label for="age3" style="color: black; margin-left: 10px;">{{obj.option3}}</label>
+              </div>
+              <div class="radio-button" style="margin-right: 380px;">
+                <input type="radio" id="age4" name="opt" value="{{obj.option4}}">
+                <label for="age4" style="color: black; margin-left: 10px;">{{obj.option4}}</label>
+              </div>
+            </div>
+            <input type="hidden" value="{{obj.id}}" name="qid">
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn_on-hover" style="background-color: white; color: black;">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .radio-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .radio-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .radio-button input[type="radio"] {
+    margin-right: 10px;
+  }
+</style>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/common.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">All Student College Applications</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Student Name</th>
+        <th>Student Email</th>
+        <th>College Name</th>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Applied On</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for app in applications %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ app.student.name }}</td>
+        <td>{{ app.student.email }}</td>
+        <td>{{ app.college.name }}</td>
+        <td>{{ app.course.name }}</td>
+        <td>
+          {% if app.status == 'pending' %}
+            <span class="badge bg-warning text-dark">Pending</span>
+          {% elif app.status == 'accepted' %}
+            <span class="badge bg-success">Accepted</span>
+          {% else %}
+            <span class="badge bg-danger">Rejected</span>
+          {% endif %}
+        </td>
+        <td>{{ app.applied_at|date:"M d, Y H:i" }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="7" class="text-center">No applications found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'admin/common.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for m in messages %}
+<script>
+    alert("{{m}}")
+</script>
+{% endfor %}
+<main class="main" style="padding: 20px; min-height: 100vh;">
+    <h2 style="text-align:center; margin-bottom: 30px;">Questions List</h2>
+    
+    <table style="width: 95%; margin: 0 auto; border-collapse: collapse; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <thead>
+            <tr style="background-color: lightblue; text-align: center;">
+                <th style="padding: 10px;">ID</th>
+                <th style="padding: 10px;">Question</th>
+                <th style="padding: 10px;">Option 1</th>
+                <th style="padding: 10px;">Option 2</th>
+                <th style="padding: 10px;">Option 3</th>
+                <th style="padding: 10px;">Option 4</th>
+                <th style="padding: 10px;">Answer</th>
+                <th style="padding: 10px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for q in questions %}
+            <tr style="text-align: center; background-color: #f9f9f9;">
+                <td style="padding: 8px;">{{ forloop.counter }}</td>
+                <td style="padding: 8px;">{{ q.question }}</td>
+                <td style="padding: 8px;">{{ q.option1 }}</td>
+                <td style="padding: 8px;">{{ q.option2 }}</td>
+                <td style="padding: 8px;">{{ q.option3 }}</td>
+                <td style="padding: 8px;">{{ q.option4 }}</td>
+                <td style="padding: 8px;">{{ q.answer }}</td>
+                <td style="padding: 8px;">
+                    <a href="{% url 'edit_question' q.id %}" style="padding: 5px 10px; background-color: lightgreen; color: black; text-decoration: none; border-radius: 5px;">Edit</a>
+                    <a href="{% url 'delete_question' q.id %}" style="padding: 5px 10px; background-color: tomato; color: white; text-decoration: none; border-radius: 5px; margin-left: 5px;">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" style="text-align:center; padding: 15px;">No questions available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
+

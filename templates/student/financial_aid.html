@@ -1,0 +1,103 @@
+{% extends 'student/common.html' %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Aid Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .financial-aid-container {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .no-options {
+            text-align: center;
+            margin: 20px 0;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="financial-aid-container">
+        <h1>Financial Aid Options</h1>
+        <p>Your Score: <strong>{{ score }}</strong></p>
+        
+        {% if loans %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Loan Name</th>
+                        <th>Provider</th>
+                        <th>Interest Rate</th>
+                        <th>Max Amount</th>
+                        <th>Tenure (Years)</th>
+                        <th>Eligibility gpa</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loan in loans %}
+                        <tr>
+                            <td>{{ loan.name }}</td>
+                            <td>{{ loan.provider }}</td>
+                            <td>{{ loan.interest_rate }}%</td>
+                            <td>${{ loan.max_amount }}</td>
+                            <td>{{ loan.tenure_years }}</td>
+                            <td>{{ loan.eligibile_gpa }}</td>
+                            <td>{{ loan.details }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="no-options">No financial aid options available for your score.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %}

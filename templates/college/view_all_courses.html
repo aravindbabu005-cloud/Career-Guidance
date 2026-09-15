@@ -1,0 +1,31 @@
+{% extends 'college/common.html' %}
+
+{% block content %}
+<br>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">All Courses</h2>
+    <div class="row">
+        {% for course in data %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary font-weight-bold">{{ course.name }}</h5>
+                    
+                    <p><strong>Duration:</strong> {{ course.duration }}</p>
+                    <p><strong>Fees:</strong> ₹{{ course.fees }}</p>
+                    <p><strong>Details:</strong> {{ course.details }}</p>
+                    <p><strong>GPA:</strong> {{ course.gpa }}</p>
+                    <p><strong>Mentor:</strong> {{ course.mentor.name }}</p>
+                    <p><strong>College:</strong> {{ course.clg.name }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-danger">No courses found.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'Admin/common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+{% endfor %}
+
+<div class="inner-page-wrapper contact-wrapper">
+
+    <div class="container">
+  
+      <div class="row">
+  
+        <div class="col-md-9 col-sm-8">
+  
+          <div class="contact-text-container">
+  
+           
+            <form method="POST" action="">
+              {% csrf_token %}
+  
+              <div class="row">
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="name"  required class="form-control form-item" placeholder="name" type="text">
+  
+                  </div>
+  
+                </div>
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="description" required class="form-control form-item" placeholder="description" type="text">
+  
+                  </div>
+  
+                </div>
+                <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="company_name " required class="form-control form-item" placeholder="company_name " type="text">
+    
+                    </div>
+    
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="location" required class="form-control form-item" placeholder="location" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="salary" required class="form-control form-item" placeholder=" salary" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="created_at"   required class="form-control form-item" placeholder="created_at" type="date">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="eligibility_criteria"  required class="form-control form-item" placeholder="eligibility_criteria" type="text">
+    
+                    </div>
+    
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="application_deadline"  required class="form-control form-item" placeholder="application_deadline" type="date">
+    
+                    </div>
+    
+                  </div>
+                  {% comment %} <div class="col-md-8 col-xs-12">
+                    <label>Select Departments:</label>
+                    <div class="form-group">
+                      <input type="checkbox" name="department" value="1"> Computer Science<br>
+                      <input type="checkbox" name="department" value="2"> Mathematics<br>
+                      <input type="checkbox" name="department" value="3"> Physics<br>
+                      <input type="checkbox" name="department" value="4"> Chemistry<br>
+
+                    </div>
+                  </div> {% endcomment %}
+                  
+
+  
+                <div class="col-xs-12">
+  
+                  <button class="btn btn-1" type="submit">Submit</button>
+  
+                </div>
+  
+              </div>
+  
+            </form>
+  
+          </div>
+  
+        </div>
+
+  
+      </div> 
+  
+    </div>
+  
+  </div>
+  {% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'student/common.html' %}
+{% block content %}
+  <h2>Eligible Colleges and Courses</h2>
+  <p>Your GPA: {{ total_sum }}</p>
+  <br /><br />
+  {% if data %}
+    <div class="college-list">
+      {% for i in data %}
+        <div class="col-sm-6 col-md-4">
+          <div class="single-item">
+            <div class="single-item-image overlay-effect">
+              <a href="#"><img src="images/courses-img1.jpg" alt="" /></a>
+            </div>
+
+            <div class="single-item-text">
+              <h4><a href>Name: {{ i.name }}</a></h4>
+
+              <div class="single-item-text-info">
+                <span>Location: <span>{{ i.location }}</span></span>
+              </div>
+
+              <p>Email: {{ i.email }}</p>
+              <p>Contact: {{ i.phone }}</p>
+
+              {% comment %} <div class="single-item-content">
+                <div class="single-item-comment-view">
+                  <span><i class="fa fa-eye"></i>259</span>
+                  <span><i class="fa fa-comment-o"></i>19</span>
+                </div>
+
+                <div class="single-item-rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div> {% endcomment %}
+            </div>
+            <div class="button-bottom">
+              <a class="btn button-default" id="btntoshow-{{ forloop.counter }}">Courses</a>
+            </div>
+          </div>
+
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+          <script>
+            $(document).ready(function () {
+              $("#btntoshow-{{ forloop.counter }}").click(function () {
+                $("#showcourse-{{ forloop.counter }}").toggle();
+              });
+            });
+          </script>
+          <div class="inner-page-wrapper course-wrapper" id="showcourse-{{ forloop.counter }}" style="display: none;">
+            <div class="container">
+              <div class="col-sm-1 col-md-4">
+                <div class="single-item">
+                  <div class="single-item-text">
+                    {% for course in cou %}
+                      {% if course in i.course_set.all %}
+                        <h4><a href="">Name: {{ course.name }}</a></h4>
+                        <div class="single-item-text-info">
+                          <span>Duration: <span>{{ course.duration }}</span></span>
+                        </div>
+                        <p>Fees: {{ course.fees }}</p>
+                        <p>GPA: {{ course.gpa }}</p>
+                        <p>{{ course.details }}</p>
+                        <div class="button-bottom">
+                          <form method="post" action="{% url 'apply_to_college' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="college_id" value="{{ i.id }}">
+                            <input type="hidden" name="course_id" value="{{ course.id }}">
+                            <button type="submit" class="btn btn-success mt-2">Apply</button>
+                          </form>
+                        </div>
+                        
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No colleges and courses available for your GPA.</p>
+  {% endif %}
+{% endblock %}

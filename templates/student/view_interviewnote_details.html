@@ -1,0 +1,60 @@
+
+{% extends 'student/common.html' %}
+{% load static %}
+{% block content %}
+
+<div class="inner-page-wrapper course-wrapper">
+
+    <div class="container">
+  
+      <div class="row offset-top-40">
+     
+        <div class="col-sm-6 col-md-4">
+
+          <div class="single-item">
+  
+            <div class="single-item-image overlay-effect"> <a href="#"><img src="images/courses-img1.jpg" alt=""></a> </div>
+  
+            <div class="single-item-text">
+                
+                
+                    {% comment %} <td style="padding: 10px;"></td>
+                    <td style="padding: 10px;">{{ note.mentor.name }}</td>
+                    <td style="padding: 10px;">
+                        <a href="{% url 'view_interview_note_details' note.id %}" class="btn">View Details</a>
+                    </td> {% endcomment %}
+            
+                
+  
+              <h4><a href="">{{ note.title }}</a></h4>
+              
+              <p><a href="">::{{ note.mentor.name }}</a></p>
+              <p><a href="">::{{ note.content }}</a></p>
+           
+              <div class="button-bottom">
+                {% if note.pdf %}
+                <a href="/download_interviewnotes?id={{note.id}}" class="btn button-default">Download PDF</a>      
+                {% else %}
+                <p style="color: red;">No PDF Available</p>
+            {% endif %}
+
+                {% comment %} <a  href="/delCourse?id={{i.id}}"  class="btn button-default">Delete</a>  {% endcomment %}
+               </div>
+  
+                    
+  
+            </div>
+           
+  
+            
+  
+          </div>
+  
+        </div>
+      </div>
+
+    </div>
+</div>
+  {% endblock %}
+
+

@@ -1,0 +1,56 @@
+{% extends 'financer/common.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+  <div class="inner-page-wrapper course-wrapper">
+
+    <div class="container">
+  
+      <div class="row offset-top-40">
+        {% for i in data %}
+        
+        <div class="col-sm-6 col-md-4">
+  
+          <div class="single-item">
+  
+            <div class="single-item-image overlay-effect"> <a href="#"><img src="images/courses-img1.jpg" alt=""></a> </div>
+  
+            <div class="single-item-text">
+  
+              <h4><a href>Name:{{i.name}}</a></h4>
+  
+              <div class="single-item-text-info"><span>provider <span>{{i.provider}}</span></span> </div>
+  
+              <p>interest_rate:{{i.interest_rate}}</p>
+              <p>max_amount:{{i.max_amount}}</p>
+              <p>tenure_years:{{i.tenure_years}}</p>
+              <p>eligibile_gpa :{{i.eligibile_gpa }}</p>
+              <p>details :{{i.details }}</p>
+  
+              {% comment %} <div class="single-item-content">
+  
+                <div class="single-item-comment-view"> <span><i class="fa fa-eye"></i>259</span> <span><i class="fa fa-comment-o"></i>19</span> </div>
+  
+                <div class="single-item-rating"> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </div>
+  
+              </div> {% endcomment %}
+  
+            </div>
+                <div class="button-bottom"> <a href="/delLoan?id={{i.id}}" class="btn button-default">Delete</a> </div>
+          </div>
+        
+        </div>
+        {% endfor %}
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+
+
+{% endblock %}

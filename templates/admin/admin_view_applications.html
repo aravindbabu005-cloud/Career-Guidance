@@ -1,0 +1,47 @@
+{% extends 'admin/common.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">All Student Job Applications</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Student Name</th>
+        <th>Email</th>
+        <th>Job Title</th>
+        <th>Company</th>
+        <th>Qualification</th>
+        <th>Marks</th>
+        <th>Resume</th>
+        <th>Applied On</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for app in applications %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ app.student.name }}</td>
+        <td>{{ app.student.email }}</td>
+        <td>{{ app.job.name }}</td>
+        <td>{{ app.job.company_name }}</td>
+        <td>{{ app.highest_qualification }}</td>
+        <td>{{ app.marks }}</td>
+        <td>
+          {% if app.resume %}
+            <a href="{{ app.resume.url }}" target="_blank">Download</a>
+          {% else %}
+            N/A
+          {% endif %}
+        </td>
+        <td>{{ app.applied_at|date:"F d, Y H:i" }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="9" class="text-center">No applications found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

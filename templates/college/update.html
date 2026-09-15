@@ -1,0 +1,95 @@
+
+  {% extends 'college/common.html' %}
+  {% load static %}
+  {% block content %}
+  
+  
+  {% for m in messages %}
+      <script>
+          alert('{{m}}');
+      </script>
+  {% endfor %}
+  
+  <div class="inner-page-wrapper contact-wrapper">
+  
+      <div class="container">
+    
+        <div class="row">
+    
+          <div class="col-md-9 col-sm-8">
+    
+            <div class="contact-text-container">
+    
+             
+              <form method="POST" action="">
+                {% for i in ups %}
+                {% csrf_token %}
+               
+    
+                <div class="row">
+    
+                  <div class="col-md-8 col-xs-12">
+    
+                    <div class="form-group">
+    
+                      <input name="name" required class="form-control form-item" value="{{i.name}}" placeholder="name" type="text">
+    
+                    </div>
+    
+                  </div>
+    
+                  <div class="col-md-8 col-xs-12">
+    
+                    <div class="form-group">
+    
+                      <input name="duration" required class="form-control form-item"  value="{{i.duration}}"  placeholder="duration" type="text">
+    
+                    </div>
+    
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+    
+                      <div class="form-group">
+      
+                        <input name="fees" required class="form-control form-item" value="{{i.fees}}" placeholder="fees" type="text">
+      
+                      </div>
+      
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                      <div class="form-group">
+                        <input name="details" required class="form-control form-item" value="{{i.details}}" placeholder="details" type="text">
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                      <div class="form-group">
+                        <input name="gpa" required class="form-control form-item" value="{{i.gpa}}" placeholder="gpa" type="text">
+                      </div>
+                    </div>
+                  <div class="col-xs-12">
+    
+                    <button class="btn btn-1" type="submit">Submit</button>
+    
+                  </div>
+    
+                </div>
+    {% endfor %}
+              </form>
+    
+            </div>
+    
+          </div>
+  
+    
+        </div> 
+    
+      </div>
+    
+    </div>
+    {% endblock %}
+
+
+
+
+
+

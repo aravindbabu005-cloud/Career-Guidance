@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Chat</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+      :root {
+        --gradient-primary: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+        --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+        --bg-primary: #f8fafc;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --message-sent: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+        --message-received: #ffffff;
+        --animation-speed: 0.3s;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      body {
+        background: var(--bg-primary);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
+      }
+      
+      .chat-container {
+        width: 1300px;
+        height: 88vh;
+        background: white;
+        border-radius: 32px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        transition: transform var(--animation-speed);
+      }
+      
+      .chat-container:hover {
+        transform: translateY(-5px);
+      }
+      
+      .sidebar {
+        width: 380px;
+        background: white;
+        border-right: 1px solid rgba(226, 232, 240, 0.8);
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .main-chat {
+        flex: 1;
+        background: var(--bg-primary);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .sidebar-header {
+        padding: 28px;
+        background: white;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .back-button {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 1.2em;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        transition: all var(--animation-speed);
+      }
+      
+      .back-button:hover {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+      }
+      
+      .header-icons {
+        display: flex;
+        gap: 20px;
+      }
+      
+      .header-icons i {
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 12px;
+        transition: all var(--animation-speed);
+      }
+      
+      .header-icons i:hover {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+      }
+      
+      .search-container {
+        padding: 20px;
+        position: relative;
+      }
+      
+      .search-input {
+        width: 100%;
+        padding: 16px 20px 16px 50px;
+        border: none;
+        background: var(--bg-primary);
+        border-radius: 16px;
+        font-size: 1em;
+        color: var(--text-primary);
+        transition: all var(--animation-speed);
+      }
+      
+      .search-input:focus {
+        outline: none;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+      }
+      
+      .search-icon {
+        position: absolute;
+        left: 35px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+      }
+      
+      .chat-list {
+        overflow-y: auto;
+        flex: 1;
+        padding: 10px 0;
+      }
+      
+      .chat-item {
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        cursor: pointer;
+        transition: all var(--animation-speed);
+        text-decoration: none;
+        color: var(--text-primary);
+        margin: 4px 12px;
+        border-radius: 16px;
+        position: relative;
+      }
+      
+      .chat-item::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width var(--animation-speed);
+      }
+      
+      .chat-item:hover {
+        background: var(--bg-primary);
+      }
+      
+      .chat-item:hover::after {
+        width: 100%;
+      }
+      
+      .profile-img {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        object-fit: cover;
+        transition: transform var(--animation-speed);
+      }
+      
+      .chat-item:hover .profile-img {
+        transform: scale(1.05);
+      }
+      
+      .chat-info {
+        flex: 1;
+      }
+      
+      .chat-info h4 {
+        font-size: 1em;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+      
+      .chat-info p {
+        font-size: 0.9em;
+        color: var(--text-secondary);
+      }
+      
+      .main-header {
+        padding: 20px 32px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      }
+      
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      
+      .user-info h3 {
+        font-weight: 600;
+      }
+      
+      .messages-container {
+        flex: 1;
+        padding: 32px;
+        overflow-y: auto;
+        background: linear-gradient(to bottom, #f8fafc, #f0f4ff);
+      }
+      
+      .message {
+        max-width: 65%;
+        margin-bottom: 24px;
+        padding: 16px 20px;
+        border-radius: 20px;
+        font-size: 0.95em;
+        line-height: 1.5;
+        position: relative;
+        animation: messageAppear var(--animation-speed) ease-out;
+      }
+      
+      @keyframes messageAppear {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .my-message {
+        background: var(--message-sent);
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 4px;
+      }
+      
+      .friend-message {
+        background: var(--message-received);
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+      
+      .message-time {
+        font-size: 0.75em;
+        margin-top: 8px;
+        opacity: 0.8;
+      }
+      
+      .input-container {
+        padding: 24px 32px;
+        background: white;
+        border-top: 1px solid rgba(226, 232, 240, 0.8);
+        position: relative;
+      }
+      
+      .message-form {
+        display: flex;
+        gap: 16px;
+        position: relative;
+      }
+      
+      .message-input {
+        flex: 1;
+        padding: 16px 24px;
+        border: 2px solid transparent;
+        background: var(--bg-primary);
+        border-radius: 16px;
+        font-size: 0.95em;
+        transition: all var(--animation-speed);
+      }
+      
+      .message-input:focus {
+        outline: none;
+        border-color: #6366f1;
+        background: white;
+      }
+      
+      .send-button {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 16px;
+        padding: 0 32px;
+        cursor: pointer;
+        transition: all var(--animation-speed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      
+      .send-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+      }
+      
+      .send-button i {
+        font-size: 1.1em;
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: rgba(203, 213, 225, 0.8);
+        border-radius: 3px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(148, 163, 184, 0.8);
+      }
+      
+      /* Status Indicators */
+      .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #10b981;
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        border: 2px solid white;
+      }
+      
+      /* Message Status */
+      .message-status {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.75em;
+        opacity: 0.8;
+      }
+      
+      /* Typing Indicator */
+      .typing-indicator {
+        display: flex;
+        gap: 4px;
+        padding: 8px 16px;
+        background: white;
+        border-radius: 16px;
+        width: fit-content;
+        margin: 8px 0;
+      }
+      
+      .typing-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--text-secondary);
+        border-radius: 50%;
+        animation: typingAnimation 1.4s infinite ease-in-out;
+      }
+      
+      .typing-dot:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      
+      .typing-dot:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      
+      @keyframes typingAnimation {
+        0%,
+        60%,
+        100% {
+          transform: translateY(0);
+        }
+        30% {
+          transform: translateY(-4px);
+        }
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 1400px) {
+        .chat-container {
+          width: 95%;
+          height: 90vh;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .sidebar {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+          transform: translateX(0);
+          transition: transform var(--animation-speed);
+        }
+      
+        .chat-container.show-chat .sidebar {
+          transform: translateX(-100%);
+        }
+      
+        .main-chat {
+          z-index: 1;
+        }
+      
+        .back-button-mobile {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <a href="/mentorpg" class="back-button"><i class="fas fa-arrow-left"></i></a>
+  
+        </div>
+
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" placeholder="Search conversations..." id="searchInput" />
+        </div>
+
+        <div class="chat-list">
+          {% for i in userData %}
+            <a href="/reply?id={{ i.id }}" class="chat-item">
+              <div style="position: relative;">
+                <img src="./static/images/download2.png" alt="" class="profile-img" />
+                <div class="status-indicator"></div>
+              </div>
+              <div class="chat-info">
+                <h4>{{ i.name }} </h4>
+                <p>Click to start conversation</p>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <!-- Main Chat Area -->
+      <div class="main-chat">
+        {% if id %}
+        <div class="main-header">
+          <div class="user-info">
+            <div style="position: relative;">
+              <img src="../static/media/{{ i.image }}" alt="" class="profile-img" />
+              <div class="status-indicator"></div>
+            </div>
+            <div>
+              <h3>{{ userid }}</h3>
+              <small style="color: var(--text-secondary);">Online</small>
+            </div>
+          </div>
+      
+        </div>
+        {% endif %}
+
+        <div class="messages-container">
+          {% for i in getChatData %}
+            {% if i.utype == 'MENTOR' %}
+              <div class="message my-message">
+                {{ i.message }}
+                <div class="message-time">
+                  {{ i.time }}
+                  <span class="message-status"><i class="fas fa-check-double"></i></span>
+                </div>
+              </div>
+            {% else %}
+              <div class="message friend-message">
+                {{ i.message }}
+                <div class="message-time">{{ i.time }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if id %}
+
+        <div class="input-container">
+          <form class="message-form" method="POST">
+            {% csrf_token %}
+            <input type="text" name="message" class="message-input" placeholder="Type your message..." required />
+            <input type="hidden" name="customerid" value="{{ customerid }}" />
+            <button type="submit" class="send-button">
+              <span>Send</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Optional: Add JavaScript for real-time features -->
+    <script>
+      // Search functionality
+      document.getElementById('searchInput').addEventListener('input', function (e) {
+        const searchTerm = e.target.value.toLowerCase()
+        const chatItems = document.querySelectorAll('.chat-item')
+      
+        chatItems.forEach((item) => {
+          const name = item.querySelector('h4').textContent.toLowerCase()
+          if (name.includes(searchTerm)) {
+            item.style.display = 'flex'
+          } else {
+            item.style.display = 'none'
+          }
+        })
+      })
+      
+      // Auto-scroll to bottom of messages
+      const messagesContainer = document.querySelector('.messages-container')
+      messagesContainer.scrollTop = messagesContainer.scrollHeight
+      
+      // Mobile responsiveness toggle
+      document.querySelector('.back-button-mobile')?.addEventListener('click', function () {
+        document.querySelector('.chat-container').classList.toggle('show-chat')
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'admin/common.html' %}
+{% block content %}
+  <h1>All Test Results</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Total Marks</th>
+        <th>Correct Answers</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+        <tr>
+          <td>{{ i.std.name }}</td>  <!-- Student Username -->
+          <td>{{ i.total_sum }}</td>  <!-- Total score -->
+          <td>{{ i.one }} correct answers</td>  <!-- Number of correct answers -->
+      
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

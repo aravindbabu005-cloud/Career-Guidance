@@ -1,0 +1,75 @@
+{% extends 'student/common.html' %}
+{% load static %}
+
+{% block content %}
+<section class=" slider_section position-relative">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <!-- <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol> -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="detail-box">
+                  <div>
+                    <h1>
+                      Test Result
+                    </h1>
+                    <p class="breadcrumbs"><span class="mr-2">Home<i class="fa fa-chevron-right"></i></span> <span>Test Result<i class="fa fa-chevron-right"></i></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="contact_section">
+  <div class="container">
+    <div class="row" style="margin-right: 20px;">
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <img src="{% static 'images/a-1.jpg' %}" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="contact-form">
+            <div class="row cont-main-top">
+                <div class="contacts12-main col-lg-8 mt-lg-0 mt-5 mx-auto">
+                 <h2 style="color:black;margin-bottom: 2rem; font-size: 3rem; text-align: center;">Test Result</h2>
+                  <b style="color: black;margin-left: 80px;">Total Marks Obtained: {{ total_sum }}</b><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .radio-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .radio-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .radio-button input[type="radio"] {
+    margin-right: 10px;
+  }
+</style>
+
+{% endblock %}

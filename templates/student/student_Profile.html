@@ -1,0 +1,54 @@
+{% extends 'student/common.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+  <div class="inner-page-wrapper course-wrapper" enctype="multipart/form-data">
+
+    <div class="container">
+  
+      <div class="row offset-top-40">
+        {% for i in data %}
+       
+        <div class="col-sm-6 col-md-4">
+  
+          <div class="single-item">
+  
+            <div class="single-item-image overlay-effect"> <a href=""><img src="./static/assets/{{i.image}}" alt="image"></a> </div>
+  
+            <div class="single-item-text">
+  
+              <h4><a href>Name:{{i.name}}</a></h4>
+  
+              <div class="single-item-text-info"><span>Location <span>{{i.location}}</span></span> </div>
+  
+              <p>Email:{{i.email}}</p>
+              <p>Qualification:{{i.qualification}}</p>
+              <p>Contact:{{i.phone}}</p>
+  
+              {% comment %} <div class="single-item-content">
+  
+                <div class="single-item-comment-view"> <span><i class="fa fa-eye"></i>259</span> <span><i class="fa fa-comment-o"></i>19</span> </div>
+  
+                <div class="single-item-rating"> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> </div>
+  
+              </div> {% endcomment %}
+  
+            </div>
+                <div class="button-bottom"> <a href="/UpdateStud?uid={{i.user_id}}" class="btn button-default">Update</a> </div>
+          </div>
+       
+        </div>
+        {% endfor %}
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+
+
+{% endblock %}

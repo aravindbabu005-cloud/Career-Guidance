@@ -1,0 +1,31 @@
+{% extends 'student/common.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">My Applied Jobs</h2>
+<br><br>
+    <div class="row">
+        {% for app in applications %}
+        <div class="col-md-6 mb-4">
+            <div class="card p-3 shadow-sm {% if forloop.counter0|divisibleby:2 %}bg-light{% else %}bg-white{% endif %}">
+                <h5>{{ app.job.name }}</h5>
+                <p><strong>Company:</strong> {{ app.job.company_name }}</p>
+                <p><strong>Description:</strong> {{ app.job.description }}</p>
+                <p><strong>Location:</strong> {{ app.job.location }}</p>
+                <p><strong>Applied On:</strong> {{ app.applied_at|date:"F d, Y H:i" }}</p>
+                <p><strong>Qualification:</strong> {{ app.highest_qualification }}</p>
+                <p><strong>Marks:</strong> {{ app.marks }}</p>
+                <p><strong>Resume:</strong> <a href="{{ app.resume.url }}" target="_blank">Download</a></p>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No jobs applied yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br><br>
+{% endblock %}
+
+

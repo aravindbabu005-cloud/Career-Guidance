@@ -1,0 +1,41 @@
+{% extends 'college/common.html' %}
+{% load static %}
+{% block content %}
+
+<div class="inner-page-wrapper course-wrapper">
+  <div class="container">
+    {% for i in data %}
+      {% if forloop.first or forloop.counter0|divisibleby:2 %}
+        <div class="row offset-top-40">
+      {% endif %}
+      
+      <div class="col-sm-6 col-md-6">
+        <div class="single-item">
+          <div class="single-item-image overlay-effect">
+            <a href="#"><img src="{% static 'images/courses-img1.jpg' %}" alt=""></a>
+          </div>
+          <div class="single-item-text">
+            <h4><a href="#">Name: {{ i.name }}</a></h4>
+            <p><a href="#">Mentor: {{ i.mentor.name }}</a></p>
+            <div class="single-item-text-info">
+              <span>Duration: <span>{{ i.duration }}</span></span>
+            </div>
+            <p>Fees: {{ i.fees }}</p>
+            <p>GPA: Students with more than {{ i.gpa }}% mark can join</p>
+            <p>{{ i.details }}</p>
+          </div>
+          <div class="button-bottom">
+            <a href="/update?id={{ i.id }}" class="btn button-default">Update</a>
+            <a href="/delCourse?id={{ i.id }}" class="btn button-default">Delete</a>
+          </div>
+        </div>
+      </div>
+
+      {% if forloop.counter|divisibleby:2 or forloop.last %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

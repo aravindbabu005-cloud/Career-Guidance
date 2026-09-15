@@ -1,0 +1,110 @@
+{% extends 'financer/common.html' %}
+{% load static %}
+{% block content %}
+
+
+{% for m in messages %}
+    <script>
+        alert('{{m}}');
+    </script>
+{% endfor %}
+
+<div class="inner-page-wrapper contact-wrapper">
+
+    <div class="container">
+  
+      <div class="row">
+  
+        <div class="col-md-9 col-sm-8">
+  
+          <div class="contact-text-container">
+  
+           
+            <form method="POST" action="">
+              {% csrf_token %}
+  
+              <div class="row">
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="name" required class="form-control form-item" placeholder="name" type="text">
+  
+                  </div>
+  
+                </div>
+  
+                <div class="col-md-8 col-xs-12">
+  
+                  <div class="form-group">
+  
+                    <input name="provider" required class="form-control form-item" placeholder="provider" type="text">
+  
+                  </div>
+  
+                </div>
+                <div class="col-md-8 col-xs-12">
+  
+                    <div class="form-group">
+    
+                      <input name="interest_rate " required class="form-control form-item" placeholder="interest_rate " type="text">
+    
+                    </div>
+    
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="max_amount" required class="form-control form-item" placeholder="max_amount " type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="tenure_years" required class="form-control form-item" placeholder="tenure_years" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="eligibile_gpa"   required class="form-control form-item" placeholder="eligibile_gpa" type="text">
+                    </div>
+                  </div>
+
+                  <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                      <input name="details"  required class="form-control form-item" placeholder=" details" type="text">
+                    </div>
+                  </div>
+                  {% comment %} <div class="col-md-8 col-xs-12">
+                    <label>Select Departments:</label>
+                    <div class="form-group">
+                      <input type="checkbox" name="department" value="1"> Computer Science<br>
+                      <input type="checkbox" name="department" value="2"> Mathematics<br>
+                      <input type="checkbox" name="department" value="3"> Physics<br>
+                      <input type="checkbox" name="department" value="4"> Chemistry<br>
+
+                    </div>
+                  </div> {% endcomment %}
+                  
+
+  
+                <div class="col-xs-12">
+  
+                  <button class="btn btn-1" type="submit">Submit</button>
+  
+                </div>
+  
+              </div>
+  
+            </form>
+  
+          </div>
+  
+        </div>
+
+  
+      </div> 
+  
+    </div>
+  
+  </div>
+  {% endblock %}
