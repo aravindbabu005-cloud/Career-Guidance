@@ -25,25 +25,27 @@ from django.core.exceptions import ValidationError
 
 def index(request):
     return render(request, "index.html")
-
-
-# =========================================================
-# LOGIN
-# =========================================================
-
 def login(request):
 
     if request.method == "POST":
 
-        name = request.POST["email"]
-        password = request.POST["password"]
+        name = request.POST.get("email")
+        password = request.POST.get("password")
+
+        if not name or not password:
+            messages.error(
+                request,
+                "Please enter username and password."
+            )
+            return render(request, "login.html")
 
         user = authenticate(
+            request,
             username=name,
             password=password
         )
 
-        if user:
+        if user is not None:
 
             if user.usertype == "admin":
 
@@ -100,20 +102,19 @@ def login(request):
 
             else:
 
-                messages.info(
+                messages.error(
                     request,
-                    "Invalid username or password"
+                    "Invalid user type."
                 )
 
         else:
 
-            messages.info(
+            messages.error(
                 request,
-                "Invalid username or password"
+                "Invalid username or password."
             )
 
     return render(request, "login.html")
-
 
 # =========================================================
 # VALIDATION
